@@ -26,3 +26,4 @@ yarn-error.log*
 .env.local
 to-do.md
 */scripts
+/config/original_settings_data.json
