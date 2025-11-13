@@ -4,13 +4,21 @@
 {%- endcomment -%}
 
 {%- liquid
-  assign promotion_type = settings.cart_promotion_type | default: 'free_shipping'
+  assign promotion_type = settings.cart_promotion_type
+  if promotion_type == blank
+    assign promotion_type = 'free_shipping'
+  endif
+
   assign show_banner = false
 
-  if promotion_type == 'free_shipping' and settings.cart_free_shipping
-    assign show_banner = true
-  elsif promotion_type == 'volume_discount' and settings.volume_discount_enabled
-    assign show_banner = true
+  if promotion_type == 'free_shipping'
+    if settings.cart_free_shipping
+      assign show_banner = true
+    endif
+  elsif promotion_type == 'volume_discount'
+    if settings.volume_discount_enabled
+      assign show_banner = true
+    endif
   elsif promotion_type == 'both'
     if settings.cart_free_shipping or settings.volume_discount_enabled
       assign show_banner = true

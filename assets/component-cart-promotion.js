@@ -60,12 +60,14 @@ if (typeof CartPromotion !== 'function') {
         let message = '';
 
         if (hasVolumeDiscount || qualifyingCount >= minQty) {
-          message = window.KROWN.settings.locales.volume_discount_eligible
+          const template = window.KROWN?.settings?.locales?.volume_discount_eligible || "You're getting {{ discount }}% off {{ count }} items!";
+          message = template
             .replace('{{ discount }}', discountPercentage)
             .replace('{{ count }}', qualifyingCount);
           cartSliderWidth = 100;
         } else {
-          message = window.KROWN.settings.locales.volume_discount_remaining
+          const template = window.KROWN?.settings?.locales?.volume_discount_remaining || "Add {{ count }} more to get {{ discount }}% off!";
+          message = template
             .replace('{{ count }}', remaining)
             .replace('{{ discount }}', discountPercentage);
           cartSliderWidth = (qualifyingCount * 100) / minQty;
