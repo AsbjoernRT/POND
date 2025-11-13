@@ -43,8 +43,15 @@
 			{%- endif -%}
 
 			<div class="cart__total cart__details--row">
-				<span>{{ 'cart.total' | t }}</span> 
-				<strong class="text-size--24">{{ cart.total_price | money | append: iso_code }}</strong>
+				<span>{{ 'cart.total' | t }}</span>
+				{%- if cart.total_discount > 0 -%}
+					<div>
+						<del class="text-size--16 text-color--opacity">{{ cart.original_total_price | money | append: iso_code }}</del>
+						<strong class="text-size--24">{{ cart.total_price | money | append: iso_code }}</strong>
+					</div>
+				{%- else -%}
+					<strong class="text-size--24">{{ cart.total_price | money | append: iso_code }}</strong>
+				{%- endif -%}
 			</div>
 
 			<span class="cart__shipping text-size--14 text-align--right">
