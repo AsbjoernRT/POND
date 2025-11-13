@@ -1,0 +1,171 @@
+{%- unless block.settings.text == blank -%}
+  <{{ block.settings.seo_h_tag }}
+    id="block-{{ block.id }}"
+    class="{{ block.settings.text_font }} {{ block.settings.text_line_height }} {{ block.settings.text_size }} rte remove-empty-space"
+    {{ block.shopify_attributes }}
+  >
+    {{ block.settings.text | replace: '[br]', '<br>' }}
+  </{{ block.settings.seo_h_tag }}>
+
+  {%- if block.settings.mobile_text_size != '1' -%}
+    <style type="text/css">
+      @media screen and (max-width: 767px) {
+        #block-{{ block.id }} {
+          --font-mobile-corrector: {{ block.settings.mobile_text_size }};
+        }
+      }
+    </style>
+  {%- endif -%}
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "t:sections.rich-text.blocks.text.name",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.rich-text.blocks.text.settings.text.label",
+      "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>",
+      "info": "t:theme_blocks.heading.settings.info"
+    },
+    {
+      "type": "select",
+      "id": "text_font",
+      "label": "t:raw-extra-words.new_schema.text_font",
+      "options": [
+        {
+          "value": "text-font--body",
+          "label": "t:sections.split-extra-words.settings_schema.typography.headings.body"
+        },
+        {
+          "value": "text-font--headings",
+          "label": "t:sections.split-extra-words.settings_schema.typography.headings.headings"
+        }
+      ],
+      "default": "text-font--body"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "t:sections.footer.blocks.text.settings.text_size.label",
+      "options": [
+        {
+          "value": "text-size--20",
+          "label": "t:raw-extra-words.settings_schema.options.extra_small"
+        },
+        {
+          "value": "text-size--30",
+          "label": "t:raw-extra-words.settings_schema.options.small"
+        },
+        {
+          "value": "text-size--40",
+          "label": "t:raw-extra-words.settings_schema.options.regular"
+        },
+        {
+          "value": "text-size--60",
+          "label": "t:raw-extra-words.settings_schema.options.large"
+        },
+        {
+          "value": "text-size--80",
+          "label": "t:raw-extra-words.settings_schema.options.extra_large"
+        },
+        {
+          "value": "text-size--100",
+          "label": "t:raw-extra-words.settings_schema.options.huge"
+        }
+      ],
+      "default": "text-size--30"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_size",
+      "label": "t:1-2-0.mobile_text_size.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:raw-extra-words.settings_schema.options.default"
+        },
+        {
+          "value": "var(--mobile-text-size-small)",
+          "label": "t:raw-extra-words.settings_schema.options.small"
+        },
+        {
+          "value": "var(--mobile-text-size-medium)",
+          "label": "t:raw-extra-words.settings_schema.options.medium"
+        },
+        {
+          "value": "var(--mobile-text-size-large)",
+          "label": "t:raw-extra-words.settings_schema.options.large"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "text_line_height",
+      "label": "t:sections.split-extra-words.settings_schema.typography.settings.line_height",
+      "options": [
+        {
+          "value": "text-line-height--default",
+          "label": "t:raw-extra-words.settings_schema.options.default"
+        },
+        {
+          "value": "text-line-height--custom-small",
+          "label": "t:raw-extra-words.settings_schema.options.small"
+        },
+        {
+          "value": "text-line-height--custom-medium",
+          "label": "t:raw-extra-words.settings_schema.options.medium"
+        },
+        {
+          "value": "text-line-height--custom-large",
+          "label": "t:raw-extra-words.settings_schema.options.large"
+        }
+      ],
+      "default": "text-line-height--default"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.refactor_words.seo.name"
+    },
+    {
+      "type": "select",
+      "id": "seo_h_tag",
+      "label": "t:sections.refactor_words.seo.label",
+      "info": "t:sections.refactor_words.seo.info",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "span",
+          "label": "span"
+        }
+      ],
+      "default": "span"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.blocks.text.name",
+      "settings": {
+        "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements or welcome customers to your store.</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,96 @@
+<div 
+  id="FeaturedMedia-{{ section.id }}-{{ media.id }}" 
+  class="product-gallery-item element--border-radius {% if section.settings.show_border %} element--has-border--body element--has-border--thin {% endif %} element--border-radius"
+  data-product-media-type="{{ media.media_type }}{% if media.media_type == 'external_video' %}-{{ media.host }}{% endif %}"
+  data-product-single-media-wrapper
+  data-media-id="{{ media.id }}"
+  data-video
+  tabindex="0"
+  data-index="{{ index }}"
+  {%- if media.media_type == 'external_video' -%} 
+    data-video-id="{{ media.external_id }}" 
+    data-video-host="{{ media.host }}"
+  {%- endif -%}
+  {%- if media.media_type == 'image' and enable_zoom -%} data-image-zoom {%- endif -%}
+  {%- if media.media_type == 'image' -%} data-ratio="{{ aspect_ratio }}" style="padding-top: {{ 100 | divided_by: aspect_ratio }}%" {%- endif -%}
+>
+
+  {%- capture sizes -%}
+    sizes="(max-width: 767px) {{ mobile_width }}vw, {%- liquid
+      if desktop_width contains 'one-half' 
+        if layout contains 'one-col'
+          if settings.page_boxed_layout
+            echo ' (max-width: 1360px) 50vw, 680px'
+          else
+            echo ' 50vw'
+          endif
+        else
+          echo ' (max-width: 1024px) 50vw,'
+          if settings.page_boxed_layout
+            echo ' (max-width: 1360px) 25vw, 340px'
+          else
+            echo ' 25vw'
+          endif
+        endif
+      else
+        if layout contains 'one-col'
+          echo ' (max-width: 1024px) 60vw,'
+          if settings.page_boxed_layout
+            echo ' (max-width: 1360px) 55vw, 768px'
+          else
+            echo ' 55vw'
+          endif
+        else
+          echo ' (max-width: 1024px) 60vw,'
+          if settings.page_boxed_layout
+            echo ' (max-width: 1360px) 33vw, 448px'
+          else
+            echo ' 33vw'
+          endif
+        endif
+      endif
+    -%}"
+  {%- endcapture -%}
+
+  {%- if media.media_type == 'image' -%}
+
+    {%- liquid
+
+      if section.index == 1 and index == 0 and section.location == 'template'
+        assign preload = 'high'
+      endif
+      
+      render 'lazy-image', image: media, alt: product.title, ratio: aspect_ratio, sizes: sizes, preload: preload, type: 'background', class: image_class, image_class: 'product-media-image', fit: section.settings.aspect_ratio_fit
+
+    -%}
+
+    {%- if enable_zoom -%}
+      <product-image-zoom class="product-gallery-item__zoom" data-image="{{ media | image_url }}" aria-hidden="true" tabindex="-1">
+        {%- render 'theme-symbols', icon: 'zoom-in' -%}
+      </product-image-zoom>
+    {% endif %}
+
+  {%- else -%}
+
+      <div class="product-gallery-item__media" style="padding-top: {{ 100 | divided_by: aspect_ratio }}%">
+
+        {%- if media.media_type == 'video' -%}
+
+          {%- render 'video-component', video_file: media, image: media.preview_image, loop_video: loop, autoplay_video: autoplay, is_background: true, crop_video: video_fit, id: image_id, title: media.alt, sizes: sizes, class: 'product-media-image' -%}  
+  
+        {%- elsif media.media_type == 'external_video' -%}
+  
+          {%- render 'video-component', video_url_id: media.external_id, video_url_type: media.host, image: media.preview_image, loop_video: loop, autoplay_video: autoplay, is_background: true, crop_video: video_fit, id: image_id, sizes: sizes, class: 'product-media-image' -%}
+
+      {%- elsif media.media_type == 'model' -%}
+
+        <product-model class="product-media-image">
+          {{ media | media_tag: image_size: "2048x", toggleable: true }}
+        </product-model>
+
+      {%- endif -%}
+    </div>
+  
+  {%- endif -%}
+
+</div>

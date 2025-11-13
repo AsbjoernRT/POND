@@ -1,0 +1,151 @@
+.swatch-list {
+  display: flex;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+}
+.facets__form--horizontal .swatch-list {
+  display: grid;
+  min-width: 23.4375rem;
+  grid-template-columns: repeat(4, 25%);
+  justify-content: center;
+}
+.facets__form--horizontal .swatch-list li {
+  width: auto;
+}
+.swatch-list label.facet-checkbox {
+  grid-template-columns: 100%;
+  justify-items: center;
+}
+.swatch-list--image-twocolumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+.swatch-list__item {
+  position: relative;
+  min-width: 3.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.swatch-list__item div {
+  transition: all 100ms linear;
+}
+.no-touchevents .swatch-list__item input:hover + div, .swatch-list__item input:focus-visible + div {
+  box-shadow: 0 0 0px 0.0625rem var(--color-borders-forms-secondary);
+  border-style: solid;
+}
+.swatch-list__item input:checked + div {
+  box-shadow: 0 0 0px 0.0625rem var(--color-scheme-text) !important;
+  border-style: solid;
+}
+.swatch-list__item .styled-checkbox {
+  display: none;
+}
+.swatch-list__item-image, .swatch-list__item-color {
+  overflow: hidden;
+  position: relative;
+  border: 1px var(--border-style-grid) var(--color-scheme-text);
+  border-radius: clamp(0px, clamp(0px, var(--border-radius-buttons), 30px), 3px);
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.swatch-list__item-image:after, .swatch-list__item-color:after {
+  content: "";
+  display: inline-block;
+  padding-top: 100%;
+}
+.swatch-list__item-image img, .swatch-list__item-color img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 120%;
+  max-height: 120%;
+}
+.swatch-list--image-twocolumns .swatch-list__item--image {
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+.swatch-list__item--image-shape {
+  border: 1px var(--border-style-grid) var(--color-scheme-text);
+  border-radius: clamp(0px, clamp(0px, var(--border-radius-buttons), 30px), 3px);
+  transition: all 175ms linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.swatch-list__item--image input {
+  transition: all 100ms linear;
+}
+.no-touchevents .swatch-list__item--image input:hover + .swatch, .swatch-list__item--image input:focus-visible + .swatch {
+  box-shadow: 0 0 0px 0.0625rem var(--color-borders-forms-secondary);
+  border-style: solid;
+}
+.swatch-list__item--image input:checked + .swatch {
+  box-shadow: 0 0 0px 0.0625rem var(--color-scheme-text) !important;
+  border-style: solid;
+}
+.swatch-list__item--image label {
+  grid-template-columns: 5rem auto;
+  padding: 0.9375rem;
+}
+.swatch-list--image-twocolumns .swatch-list__item--image label {
+  grid-template-columns: 100%;
+  justify-items: center;
+  text-align: center;
+  height: 100%;
+  margin: 0;
+  align-items: end;
+}
+.swatch-list__item--image-active label {
+  border-color: var(--text-color);
+}
+.swatch-list__item--image img {
+  position: relative;
+  max-width: 5rem;
+  width: 100%;
+  height: auto;
+}
+.swatch-list--image-twocolumns .swatch-list__item--image img {
+  align-self: end;
+}
+
+.facets__item--swatch .swatch {
+  overflow: hidden;
+  position: relative;
+  transition: all 100ms linear;
+  border: 1px var(--border-style-grid) var(--color-scheme-text);
+  border-radius: clamp(0px, clamp(0px, var(--border-radius-buttons), 30px), 3px);
+  width: 1.75rem;
+  height: 1.75rem;
+}
+html[dir=rtl] .facets__item--swatch .swatch {
+  right: 0.0625rem;
+}
+html[dir=ltr] .facets__item--swatch .swatch {
+  left: 0.0625rem;
+}
+.facets__item--swatch input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+}
+.no-touchevents .facets__item--swatch input[type=checkbox]:hover + .swatch, .facets__item--swatch input[type=checkbox]:focus-visible + .swatch {
+  box-shadow: 0 0 0px 0.0625rem var(--color-borders-forms-secondary);
+  border-style: solid;
+}
+.facets__item--swatch input[type=checkbox]:checked + .swatch {
+  box-shadow: 0 0 0px 0.0625rem var(--color-scheme-text) !important;
+  border-style: solid;
+}
+html[dir=rtl] .facets__item--swatch {
+  right: 0.0625rem;
+}
+html[dir=ltr] .facets__item--swatch {
+  left: 0.0625rem;
+}

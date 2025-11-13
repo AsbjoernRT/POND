@@ -1,0 +1,76 @@
+<div id="block-{{ block.id }}" {{ block.shopify_attributes }}>
+  {%- render 'button',
+    label: block.settings.button_label,
+    link: block.settings.link,
+    style: block.settings.button_style,
+    class: block.settings.button_size,
+    target: block.settings.target
+  -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.rich-text.blocks.button.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:sections.rich-text.blocks.button.settings.button_label.label",
+      "default": "Show more"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:sections.rich-text.blocks.button.settings.button_link.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "target",
+      "label": "t:sections.local-extra-words.sections.announcement-bar.blocks.content.settings.target",
+      "visible_if": "{{ block.settings.link != blank }}",
+      "default": false
+    },
+    {
+      "id": "button_style",
+      "label": "t:sections.local-extra-words.sections.buttons.style.label",
+      "type": "select",
+      "options": [
+        {
+          "value": "outline",
+          "label": "t:sections.local-extra-words.sections.buttons.style.option__1"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.local-extra-words.sections.buttons.style.option__2"
+        }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "select",
+      "id": "button_size",
+      "label": "t:sections.local-extra-words.sections.main-header.settings.promotion_block.button.size",
+      "options": [
+        {
+          "value": "button--small",
+          "label": "t:raw-extra-words.settings_schema.options.small"
+        },
+        {
+          "value": "button--regular",
+          "label": "t:raw-extra-words.settings_schema.options.regular"
+        },
+        {
+          "value": "button--large",
+          "label": "t:raw-extra-words.settings_schema.options.large"
+        }
+      ],
+      "default": "button--small"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.blocks.button.name"
+    }
+  ]
+}
+{% endschema %}

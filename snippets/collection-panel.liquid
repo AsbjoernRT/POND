@@ -1,0 +1,83 @@
+{%- comment -%}
+  Renders collection panel (used in featured collection section)
+
+  Accepts:
+  - collection: {Object} collection object.
+  - panel_id: {Integer} can be 0 - 3 for existing collections, or -1 for onboarding collection.
+  - collection_tabs: {Integer} number of total collection panels.
+  - active: {Boolean} if true, panel is active.
+
+  Usage:
+  {% render 'collection-item', collection: collection, image_aspect_ratio: '1', sizes: 'sizes="250px"', index: forloop.index %}
+{%- endcomment -%}
+
+{%- liquid
+  if panel_id == -1
+    assign collection = "onboarding"
+  endif
+
+  assign slider_id =  section.id  | append: '-' | append: panel_id
+  assign translated_cta_label = 'collections.view_all_products' | t
+-%}
+
+<div 
+  class="collection-tabs_panel 
+    {% if collection_tabs == 1 or collection == "onboarding" %} active {% endif %}
+    {% if active %} active {% endif %}
+  "
+  id="collection-{{ section.id }}-{{ panel_id }}"
+  data-index="{{ panel_id }}"
+  {% unless collection_tabs == 1 %}
+    role="tabpanel" aria-labelledby="collection-{{ section.id }}-{{ panel_id }}" 
+    {% unless active %} aria-hidden="true" {% endunless %}
+  {% endunless %}
+>
+
+  {%- if section.settings.style == 'slider' -%}
+    <css-slider data-options='{
+      "selector": "[data-js-product-item]",
+      "groupCells": true,
+      "navigation": false,
+      "thumbnails": false,
+      "disableMouseDownEvent": false
+      }'
+      class="css-slider"
+      id="slider-{{ slider_id }}"
+    >
+  {%- endif -%}  
+
+  <div class="grid {% if section.settings.style == 'slider' %} grid--slider {% else %} grid--layout element--overflow-hidden {% endif %} {{ grid_class_desktop }} {{ grid_class_mobile }} {% if settings.product_card_disable_border %} element--hide-inner-borders {% endif %}">
+
+    {%- liquid
+      if collection != blank and collection != "onboarding" and collection_tabs > 0
+        for product in collections[collection].products limit: section.settings.products_number
+          render 'product-item', product: product, product_collection: collections[collection], index: forloop.index, layout_desktop: grid_class_desktop, layout_mobile: section.settings.layout_mobile, section_id: section.id
+        endfor
+      else 
+        for i in (1..section.settings.products_number)
+          render 'product-item', blank_product: true, index: forloop.index
+        endfor
+      endif
+    -%}
+
+  </div>
+
+  {%- if section.settings.style == 'slider' -%}
+    </css-slider>
+
+    {%- assign translated_cta_label = 'collections.view_all_products' | t -%}
+
+    {%- render 'section-footer', cta_label: translated_cta_label, cta_label_is_translation: false, cta_url: collections[collection].url, customclass: 'js-view-collection-link', nav: slider_id, nav_desktop: false, nav_mobile: true -%}
+
+  {%- else -%}
+
+    {%- render 'section-footer', 
+      cta_label: translated_cta_label, 
+      cta_label_is_translation: false, 
+      cta_url: collections[collection].url, 
+      customclass: 'js-view-collection-link' 
+    -%}
+    
+  {%- endif -%}
+
+</div>

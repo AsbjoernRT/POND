@@ -1,0 +1,107 @@
+{%- assign color_label = settings.color_swatches_labels | split: ',' -%}
+
+<product-variants 
+  data-main-product-variants
+  {% if main_product %} data-main-product-page-variants {% endif %}
+  data-variants="{{ product.options_with_values.size }}"
+  data-hide-variants="true"
+  data-unavailable-variants="{%- if block.settings.unavailable_variants == 'disable' -%}disable{%- else -%}show{%- endif -%}"
+  data-url="{{ product.url }}" data-id="{{ section.id }}" data-helper-id="{{ section.id }}"
+  data-style="{{ block.settings.variants_style }}"
+  {% if no_history %} data-no-history {% endif %}
+  {% if product.has_only_default_variant %} style="display:none" {% endif %}
+  {% if product.available == false and block.settings.unavailable_variants == 'hide' %} style="display:none" {% endif %}
+  class="product-text-element--with-borders product-variants product-variants--{{  block.settings.unavailable_variants }}-unavailable no-js-hidden"
+  {% unless default_to_first_variant %} data-variant-required {% endunless %}
+  {% unless product.has_only_default_variant %} data-has-variants {% elsif product.available == false %} data-unavailable {% endunless %}
+  {{ block.shopify_attributes }}
+> 
+
+  <script type="application/json" data-js-variant-data data-update-block="variant-data">
+    {{ current_variant | json }}
+  </script>
+
+  <div>
+
+    {%- for option in product.options_with_values -%}
+
+      {%- assign option_downcased = option.name | downcase -%}
+      
+      <div class="product-variant" data-name="product-{{ option.name | escape | downcase | strip | handleize  }}-{{ section.id }}" data-js-product-variant>
+
+        {%- liquid
+          assign swatch_count = option.values | map: 'swatch' | compact | size
+          if color_label contains option_downcased and settings.color_swatches
+            assign is_color = true
+          elsif settings.color_swatches and swatch_count > 0
+            assign is_color = true
+          else
+            assign is_color = false
+          endif
+        -%}
+
+        <span class="product-variant__name">{{ 'products.grid.select_variant' | t: variant: option_downcased }}</span>
+
+        {%- if is_color -%}
+
+          <div class="product-variant__container product-variant__container--radio product-variant__container--radio--wrap" data-js-product-variant-container="radio">
+            {%- render 'product-variant-options', type: 'swatch', option: option, product: product, default_to_first_variant: default_to_first_variant, handle_unavailable_variants: block.settings.unavailable_variants, current_variant: current_variant, id: section.id -%}
+          </div>
+
+          <span class="product-variant__item-text-label text-size--14 text-line-height--small">
+            {%- unless default_to_first_variant -%}
+              <div class="show-block-if-variant-not-selected-yet">{{ 'products.grid.color_variants_count' | t: count: option.values.size }}</div>
+              <div class="show-block-if-variant-selected">{{ option.selected_value }}</div>
+            {%- else -%}
+              <div>{{ option.selected_value }}</div>
+            {%- endunless -%}
+          </span>
+
+        {%- elsif block.settings.variants_style == 'select' -%}
+
+          <select class="product-variant__container product-variant__container--select" id="product-{{ option.name | escape | downcase | strip | handleize  }}-{{ section.id }}" data-js-product-variant-container="select">
+            {%- unless default_to_first_variant -%}
+              <option class="product-variant-value" default selected disabled>{{ 'products.grid.select_variant' | t: variant: option_downcased }}</option>
+            {%- endunless -%}
+            {%- render 'product-variant-options', type: 'select', option: option, product: product, default_to_first_variant: default_to_first_variant, handle_unavailable_variants: block.settings.unavailable_variants, current_variant: current_variant, id: section.id -%}
+          </select>
+
+        {%- else -%}
+
+          <div class="product-variant__container product-variant__container--radio product-variant__container--radio--wrap" data-js-product-variant-container="radio">
+            {%- render 'product-variant-options', type: 'radio', option: option, product: product, default_to_first_variant: default_to_first_variant, handle_unavailable_variants: block.settings.unavailable_variants, current_variant: current_variant, id: section.id -%}
+          </div>
+
+        {%- endif -%}
+
+        {%- if block.settings.unavailable_variants == 'hide' -%}
+          <p class="product-variant__out-of-stock text-size--regular text-color--opacity hide" aria-hidden="true">{{ 'products.page.inventory.no_products' | t }}</p>
+        {%- endif -%}
+
+        {%- if block.settings.size_guide_set contains option_downcased and block.settings.size_guide_page != blank -%}
+
+          {%- assign size_chart_id = 'size-chart-' | append: section.id -%}
+
+          <a class="product-variant__size-chart-link text-size--14 {% if block.settings.open_mode == "popup" %} js-toggle-size-chart-modal {% endif %}" 
+            href="{{ block.settings.size_guide_page.url }}" 
+            {% if block.settings.size_guide_open == 'blank' %} target="_blank" {% endif %}
+            {% if block.settings.size_guide_open == 'popup' %} onclick="document.getElementById('{{ size_chart_id }}').show();return false;" {% endif %}
+          >
+            <span>{{ block.settings.size_guide_button | escape }}</span>
+          </a>
+
+          {%- liquid
+            if block.settings.size_guide_open == 'popup'  
+              render 'modal', id: size_chart_id, enabled: false, size: 80, subject: pages[block.settings.size_guide_page].title, content: pages[block.settings.size_guide_page].content, append_to_body: true
+            endif
+          -%} 
+
+        {%- endif -%}
+
+      </div>
+
+    {%- endfor -%}
+
+  </div>
+  
+</product-variants>

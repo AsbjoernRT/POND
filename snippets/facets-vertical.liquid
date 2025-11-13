@@ -1,0 +1,135 @@
+{{ 'component-facets-vertical.css' | asset_url | stylesheet_tag }}
+{{ 'component-range-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-toggle.css' | asset_url | stylesheet_tag }}
+{{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+
+{%- unless location == 'mobile' -%}
+  <span class="text-size--18 text-weight--bold facets-sidebar--heading element--hide-on-small">{{ 'collections.refine' | t }}</span>
+  {%- render 'facets-header', results: results, offset: offset, page_size: page_size, location: 'desktop' -%}
+{%- endunless -%}
+
+<facet-filters-form class="facets {% if location == 'desktop' %} element--hide-on-small  {% else %} sidebar-large-padding {% endif %}" data-location="{{ location }}">
+
+  <form id="FacetFiltersForm{%- if location == 'mobile' -%} Mobile {%- endif -%}" class="facets__form facets__form--{{ location }} facets__form--vertical">
+
+    {%- if results.terms -%}
+      <input type="hidden" name="q" value="{{ results.terms | escape }}">
+      <input name="options[prefix]" type="hidden" value="last">
+    {%- elsif results.current_vendor or results.current_type -%}
+      <input type="hidden" name="q" value="{{ results.current_vendor }}{{ results.current_type }}">
+    {%- endif -%}
+
+    {% unless location != 'mobile' %}
+    <div>
+      {%- if enable_sorting and results.products.size != 0 -%}
+        <div class="collection-filters__item sorting">
+          <div class="collection-filters__field">
+            <label class="collection-filters__label text-weight--bold" for="{{ location }}-SortBy">{{ 'collections.sort_by_label' | t }}</label>
+            <div class="select">
+              {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+              <select name="sort_by" class="select__select collection-filters__sort" id="{{ location }}-SortBy" aria-describedby="a11y-refresh-page-message">
+                {%- for option in results.sort_options -%}
+                  <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected="selected"{% endif %}>{{ option.name | escape }}</option>
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+          <noscript>
+            <button type="submit" class="button button button--regular button--outline">{{ 'collections.sort_button' | t }}</button>
+          </noscript>
+        </div>
+      {%- endif -%}
+    </div>
+    {% endunless %}
+
+    {%- if enable_filtering -%}
+
+      <div class="facets__wrapper" id="FacetFiltersWrapper-{{ location }}">
+
+        {%- if location == 'mobile' -%}
+          <div class="facets-sidebar-header">
+            <span class="text-size--18 text-weight--bold facets-sidebar--heading element--hide-on-small">{{ 'collections.refine' | t }}</span>
+            {%- render 'facets-header', results: results, offset: offset, page_size: page_size, location: 'mobile' -%}
+          </div>
+        {%- endif -%}
+  
+        {%- assign color_label = settings.color_swatches_labels | split: ',' -%}
+
+        {%- for filter in results.filters -%}
+
+          {%- case filter.type -%}
+            
+            {%- when 'boolean' or 'list' -%}
+
+              <div  id="Filter-{{ filter.param_name | handleize }}-{{ location }}" class="facets__disclosure js-filter" data-index="{{ forloop.index }}-{{ location }}" 
+                {% if filter.operator == 'AND' %} data-and-operator {% endif %}
+              >
+               
+                <toggle-tab class="toggle toggle--facets" 
+                  data-togglepack-alternate
+                  data-toggle-inert
+                >
+
+                  <div class="toggle__title" data-js-title tabindex="0" aria-expanded="false" role="button" aria-controls="toggle-{{ forloop.index }}-{{ filter.label | handleize }}-{{ location }}">
+                    <div class="toggle__heading">
+                       <span class="facets__summary-text text-transform--uppercase">
+                        {{ filter.label | escape }} 
+                        </span>
+                    </div>
+                  </div>                
+                  
+                  <div id="toggle-{{ forloop.index }}-{{ filter.label | handleize }}-{{ location }}" data-js-content class="toggle__content rte remove-empty-space" role="region" inert>
+                    <div class="facets__display">
+                      {%- if filter.operator == 'AND' -%}
+                        <span class="facets__and-helper-text--mobile text-size--16 text-color--opacity hide">{{ 'collections.match_all_label' | t }}</span>
+                      {%- endif -%}
+                      
+                      {%- assign color_label = settings.color_swatches_labels | split: ',' -%}
+                      {%- render 'filter-blocks', filter: filter, color_label: color_label, location: location, image_filter_layout: image_filter_layout -%}
+                      
+                    </div>
+                  </div>
+
+                </toggle-tab>
+              </div>
+
+            {%- when 'price_range' -%}
+
+              <div id="Filter-{{ filter.param_name | handleize }}-{{ location }}" class="facets__disclosure js-filter" data-index="{{ forloop.index }}-{{ location }}">
+                <toggle-tab class="toggle toggle--facets" 
+                    data-togglepack-alternate
+                    data-toggle-inert
+                    {{ block.shopify_attributes }}
+                  >
+
+                  <div class="toggle__title" data-js-title tabindex="0" aria-expanded="false" role="button" aria-controls="toggle-{{ forloop.index }}-{{ filter.label | handleize }}-{{ location }}">
+                    <div class="toggle__heading">
+                       <span class="facets__summary-text text-weight--medium text-transform--uppercase">
+                        {{ filter.label | escape }} 
+                        </span>
+                    </div>
+                  </div>   
+                
+                  <div id="toggle-{{ forloop.index }}-{{ filter.label | handleize }}-{{ location }}" data-js-content class="toggle__content rte remove-empty-space" role="region" inert>
+                  
+                  {%- render 'filter-price-range', filter: filter -%}
+
+                  </div>
+                </toggle-tab>
+              </div>
+
+          {%- endcase -%}
+
+        {%- endfor -%}
+        
+        <noscript>
+          <button type="submit" class="facets__button button button--regular button--outline">{{ 'collections.filter_button' | t }}</button>
+        </noscript>
+        
+      </div>
+    {%- endif -%}
+  </form>
+
+</facet-filters-form>
+
+<script src="{{ 'component-toggle.js' | asset_url }}" defer></script>

@@ -1,0 +1,305 @@
+{%- if section.blocks.size > 0 -%}
+  <div id="section-{{ section.id }}">
+    {%- render 'section-heading',
+      heading: section.settings.heading,
+      seo_h_tag: section.settings.seo_h_tag,
+      hide_border: section.settings.disable_section_title_border
+    -%}
+
+    {%- liquid
+      assign calculated_aspect_ratio = section.settings.card_height | times: 0.25 | plus: 0.25
+      assign calculated_aspect_ratio_mobile = section.settings.card_height_mobile | times: 0.25 | plus: 0.25
+    -%}
+
+    <div
+      class="
+        grid grid--layout element--overflow-hidden grid--layout-items
+        {% if section.settings.disable_border %} element--hide-inner-borders {% endif %}
+      "
+      style="
+        --grid-aspect: {{ calculated_aspect_ratio }};
+        --grid-aspect-mobile: {{ calculated_aspect_ratio_mobile }};
+      "
+    >
+      {% content_for 'blocks' %}
+    </div>
+
+    {%- render 'color-scheme',
+      color_scheme: section.settings.color_scheme,
+      hide_section_bottom_border: section.settings.disable_section_bottom_border,
+      prlx: true
+    -%}
+  </div>
+
+{%- else -%}
+  <style type="text/css">
+    #shopify-section-{{ section.id }} { display: none !important; }
+  </style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:theme_blocks.sections.flex-section.name",
+  "class": "element--has-section-borders mount-css-slider mount-promotion-blocks",
+  "blocks": [
+    {
+      "type": "_grid-text"
+    },
+    {
+      "type": "_grid-media"
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:raw-extra-words.settings_schema.layout_labels.section_heading.label"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "t:sections.local-extra-words.sections.headings.heading",
+      "default": "Flex grid"
+    },
+    {
+      "type": "select",
+      "id": "seo_h_tag",
+      "label": "t:sections.refactor_words.seo.label",
+      "info": "t:sections.refactor_words.seo.info",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "span",
+          "label": "span"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_section_title_border",
+      "label": "t:raw-extra-words.settings_schema.borders.remove.hide_section_title_border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:raw-extra-words.settings_schema.layout_labels.layout"
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "label": "t:theme_blocks.sections.flex-section.height.label_desktop"
+    },
+    {
+      "type": "paragraph",
+      "content": "t:theme_blocks.sections.flex-section.height.info"
+    },
+    {
+      "type": "range",
+      "id": "card_height_mobile",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "label": "t:theme_blocks.sections.flex-section.height.label_mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:raw-extra-words.settings_schema.colors.header_section"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:color-schemes.name_singular",
+      "default": "scheme_1"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_section_bottom_border",
+      "label": "t:raw-extra-words.settings_schema.borders.remove.hide_section_bottom_border",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:raw-extra-words.settings_schema.colors.header_inner"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_border",
+      "label": "t:raw-extra-words.settings_schema.borders.remove.hide_borders",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "card_hover",
+      "visible_if": "{{ settings.card_hover == 'accent' }}",
+      "label": "t:raw-extra-words.settings_schema.embellishments.card_hover.label",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:raw-extra-words.settings_schema.embellishments.card_hover.option_1"
+        },
+        {
+          "value": "accent",
+          "label": "t:raw-extra-words.settings_schema.embellishments.card_hover.option_2"
+        }
+      ],
+      "default": "none"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:theme_blocks.sections.flex-section.name",
+      "blocks": [
+        {
+          "type": "_grid-media",
+          "name": "t:theme_blocks.grid-media.name",
+          "settings": {
+            "image_overlay": "#000000",
+            "image_overlay_opacity": 30,
+            "media_shape": "9999px 9999px var(--brg) var(--brg)",
+            "add_gallery_item_border": false,
+            "column_desktop": 4,
+            "row_desktop": 2,
+            "hide_on_mobile": false,
+            "column_mobile": "2",
+            "row_mobile": "2",
+            "alignment": "horizontal-left align-content--vertical-bottom",
+            "gutter": "grid-padding",
+            "width": "90"
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Use this text to share information about your brand with your customers</p>",
+                "text_font": "text-font--body",
+                "text_size": "text-size--20",
+                "text_line_height": "text-line-height--default",
+                "seo_h_tag": "span"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Show more",
+                "button_style": "solid",
+                "button_size": "button--small"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_grid-text",
+          "settings": {
+            "column_desktop": 4,
+            "row_desktop": 2,
+            "hide_on_mobile": false,
+            "column_mobile": "2",
+            "row_mobile": "2",
+            "alignment": "horizontal-left align-content--vertical-bottom",
+            "gutter": "grid-padding",
+            "width": "90",
+            "color_scheme_card": "scheme_3"
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Share your story—how your brand started, your mission, and what you stand for</p>",
+                "text_font": "text-font--body",
+                "text_size": "text-size--20",
+                "text_line_height": "text-line-height--default",
+                "seo_h_tag": "span"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_grid-media",
+          "name": "t:theme_blocks.grid-media.name",
+          "settings": {
+            "image_overlay": "rgba(0,0,0,0)",
+            "image_overlay_opacity": 1,
+            "media_shape": "var(--brg) var(--brg) 9999px 9999px",
+            "add_gallery_item_border": false,
+            "column_desktop": 2,
+            "row_desktop": 1,
+            "hide_on_mobile": false,
+            "column_mobile": "1",
+            "row_mobile": "2"
+          }
+        },
+        {
+          "type": "_grid-media",
+          "name": "t:theme_blocks.grid-media.name",
+          "settings": {
+            "image_overlay_opacity": 1,
+            "media_shape": "var(--brg) 9999px 9999px var(--brg)",
+            "add_gallery_item_border": false,
+            "column_desktop": 2,
+            "row_desktop": 1,
+            "hide_on_mobile": false,
+            "column_mobile": "1",
+            "row_mobile": "2"
+          }
+        },
+        {
+          "type": "_grid-text",
+          "settings": {
+            "column_desktop": 4,
+            "row_desktop": 1,
+            "column_mobile": "2",
+            "row_mobile": "2",
+            "alignment": "horizontal-right align-content--vertical-top",
+            "gutter": "grid-padding",
+            "width": "90",
+            "color_scheme_card": "scheme_3"
+          },
+          "blocks": [
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Introduce your brand and tell customers what makes it unique</p>",
+                "text_font": "text-font--body",
+                "text_size": "text-size--20",
+                "text_line_height": "text-line-height--default",
+                "seo_h_tag": "span"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Button label",
+                "button_style": "solid",
+                "button_size": "button--small"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "custom.drawers", "custom.overlay"]
+  }
+}
+{% endschema %}

@@ -1,0 +1,103 @@
+<div class="card 
+  {% if promo.remove_padding %} card--no-padding {% endif %}
+  {% if promo.hide_on_mobile %} lap-hide {% endif %}" 
+  {{ shopify_attributes }}
+  {% if promo.remove_border_radius or promo.remove_padding %} style="--border-radius-grid:0" {% endif %}
+> 
+
+  {%- if promo.button_link != blank and promo.button_label == blank -%}
+    <a href="{{ promo.button_link }}" title="{{ promo.title | escape }}"
+      {% if promo.button_target %} target="_blank" {% endif %}
+      class="product-item__invisible-link"
+    ></a>
+  {%- endif -%}
+
+  {%- assign aspect_ratio = settings.product_card_aspect_ratio -%}
+  <div class="promo-card element--overflow-hidden" style="padding-top:{{ 100 | divided_by: aspect_ratio }}%" 
+    {% if promo.video != blank or promo.image != blank %} data-js-prlx-parent {% endif %}
+  >
+    
+  {%- if promo.image_overlay != 'rgba(0,0,0,0)' and promo.image_overlay != blank -%}
+    <div class="promo-card__overlay" style="pointer-events: none; background-color: {{ promo.image_overlay }}; opacity: {{ promo.image_overlay_opacity }}%"></div>
+  {%- endif -%}
+
+  {%- liquid 
+    if layout_desktop contains 'grid-6'
+      assign sizes = '(max-width: 767px) 33vw, (max-width: 1023px) 25vw, (max-width: 1280px) 20vw, '
+    elsif layout_desktop contains 'grid-5'
+      assign sizes = '(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1280px) 25vw, '
+    elsif layout_desktop contains 'grid-4'
+      assign sizes = '(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"'
+    else 
+      assign sizes = '(max-width: 1023px) 50vw, 33vw"'
+    endif
+    if layout_mobile contains 'grid-palm-2'
+      assign sizes = sizes | prepend: 'sizes="(max-width: 474px) 50vw, '
+    else
+      assign sizes = sizes | prepend: 'sizes="(max-width: 474px) 100vw, '
+    endif
+  -%}
+
+  {%- unless promo.video == blank -%}
+
+    {%- assign id = 'promo-' | append: section.id | append: '-' | append: index -%}
+      
+    {%- render 'video-component', video_file: promo.video, image: promo.image, sizes: sizes, id: id, autoplay_video: true, loop_video: true, is_background: true, crop_video: true, overlay: promo.image_overlay, overlay_opacity: promo.image_overlay_opacity -%}
+    <script>
+      window.KrownAssetLoader.loadScript('{{ "component-video.js" | asset_url }}');
+    </script>
+  
+  {%- elsif promo.image != blank -%}
+
+      <div class="promo-card__image"
+        data-js-prlx-children
+      >
+        {%- liquid
+          if index <= 2
+            assign preload = true
+          else
+            assign preload = false
+          endif
+          render 'lazy-image', image: promo.image, sizes: sizes, preload: preload, type: 'background', alt: promo.title, overlay: promo.image_overlay, overlay_opacity: promo.image_overlay_opacity, prlx: true, class: 'js-parallax-media', image_alignment: true
+        -%}
+      </div>
+
+    {%- endunless -%}
+
+    <div class="promo-card__text element--overflow-hidden
+      align-content align-content--{{ promo.text_alignment }}
+      {% if promo.remove_padding %} gutter--grid-padding {% else %} gutter--regular {% endif %}" 
+      style="color: {{ promo.text_color }};
+      --color-scheme-text: {{ promo.text_color }}; pointer-events: none;
+    ">
+
+      <div class="spacing--custom remove-empty-space" style="--spacing: 1rem; pointer-events: all">
+
+        {%- unless promo.title == blank -%}
+          <div class="promo-card__title">
+            <span class="text-font--headings text-size--40 text-line-height--small">
+              {{ promo.title | escape }}
+            </span>
+          </div>
+        {%- endunless -%}
+
+        {%- unless promo.subtitle == blank -%}
+          <div class="promo-card__subtitle">
+            <span class="text-size--18">
+              {{ promo.subtitle | escape }} 
+            </span>
+          </div>
+        {%- endunless -%}
+
+        {%- unless promo.button_label == blank -%}
+          <div class="promo-card__cta">
+            {%- render 'button', label: promo.button_label, link: promo.button_link, style: 'outline-arrow', target: promo.button_target -%}
+          </div>
+        {%- endunless -%}
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

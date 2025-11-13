@@ -1,0 +1,70 @@
+{%- liquid 
+  unless layout == "shop-the-look"
+    if layout_desktop contains "grid-6"
+      assign sizes = "(max-width: 767px) 33vw, (max-width: 1023px) 25vw, (max-width: 1280px) 20vw, "
+      if settings.page_boxed_layout
+        assign sizes = sizes | append: "(max-width: 1360px) 16vw, 220px"
+      else
+        assign sizes = sizes | append: "16vw"
+      endif
+    elsif layout_desktop contains "grid-5"
+      assign sizes = "(max-width: 767px) 50vw, (max-width: 1023px) 33vw, (max-width: 1280px) 25vw, "
+      if settings.page_boxed_layout
+        assign sizes = sizes | append: "(max-width: 1360px) 20vw, 270px"
+      else
+        assign sizes = sizes | append: "20vw"
+      endif
+    elsif layout_desktop contains "grid-4"
+      assign sizes = "(max-width: 767px) 50vw, (max-width: 1280px) 33vw, "
+      if settings.page_boxed_layout
+        assign sizes = sizes | append: "(max-width: 1360px) 25vw, 340px"
+      else
+        assign sizes = sizes | append: "25vw"
+      endif
+    elsif layout_desktop contains "grid-2"
+      assign sizes = "(max-width: 767px) 100vw, "
+      if settings.page_boxed_layout
+        assign sizes = sizes | append: "(max-width: 1360px) 50vw, 680px"
+      else
+        assign sizes = sizes | append: "50vw"
+      endif
+    else
+      assign sizes = "(max-width: 1023px) 50vw, "
+      if settings.page_boxed_layout
+        assign sizes = sizes | append: "(max-width: 1360px) 33vw, 450px"
+      else
+        assign sizes = sizes | append: "33vw"
+      endif
+    endif
+    if layout_mobile contains "grid-palm-2"
+      assign sizes = sizes | prepend: "(max-width: 474px) 50vw, "
+    else
+      assign sizes = sizes | prepend: "(max-width: 474px) 100vw, "
+    endif
+  else
+    assign sizes = "(max-width: 1023px) 50vw, "
+    if settings.page_boxed_layout
+      assign sizes = sizes | append: "(max-width: 1360px) 25vw, 680px"
+    else
+      assign sizes = sizes | append: "25vw"
+    endif
+  endunless
+-%}
+
+<div class="product-item" data-js-product-item>
+
+  <div class="card__hover"></div>
+
+  <a class="product-item__invisible-link"></a>
+
+  <div class="card__content">
+    <div class="product-item__text"></div>
+  </div>
+
+</div>
+
+<script type="application/json" data-product-skeleton-settings>
+  {
+    "product_image_sizes": "{{ sizes }}"
+  }
+</script>

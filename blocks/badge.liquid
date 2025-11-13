@@ -1,0 +1,41 @@
+{%- if block.settings.badge_label != blank -%}
+  <div class="pill pill--medium pill--{{ block.settings.badge_style }}" {{ block.shopify_attributes }}>
+    <span class="pill__text">{{ block.settings.badge_label | escape }}</span>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:raw-extra-words.rotating-badges.block.name",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_label",
+      "label": "t:sections.local-extra-words.sections.main-product.blocks.icons.settings.label",
+      "default": "Badge"
+    },
+    {
+      "id": "badge_style",
+      "label": "t:sections.local-extra-words.sections.header.blocks.info.style.label",
+      "type": "select",
+      "options": [
+        {
+          "value": "outline",
+          "label": "t:sections.local-extra-words.sections.buttons.style.option__1"
+        },
+        {
+          "value": "solid",
+          "label": "t:sections.local-extra-words.sections.buttons.style.option__2"
+        }
+      ],
+      "default": "solid"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:raw-extra-words.rotating-badges.block.name"
+    }
+  ]
+}
+{% endschema %}
