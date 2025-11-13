@@ -295,7 +295,9 @@
     "remove_discount_code": "할인 코드 제거: {{ code }}",
     "continue_shopping": "쇼핑 계속하기",
     "quick_buy_product": "지금 구매하기",
-    "quick_view_product": "상품 보기"
+    "quick_view_product": "상품 보기",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

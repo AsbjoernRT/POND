@@ -295,7 +295,9 @@
     "remove_discount_code": "Премахване на кода за отстъпка: {{ code }}",
     "continue_shopping": "Продължете с пазаруването",
     "quick_buy_product": "Купете сега",
-    "quick_view_product": "Преглед на продукта"
+    "quick_view_product": "Преглед на продукта",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

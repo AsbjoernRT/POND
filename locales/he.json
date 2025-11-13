@@ -295,7 +295,9 @@
     "remove_discount_code": "הסר קוד הנחה: {{ code }}",
     "continue_shopping": "המשך בקנייה",
     "quick_buy_product": "קנה עכשיו",
-    "quick_view_product": "הצג מוצר"
+    "quick_view_product": "הצג מוצר",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

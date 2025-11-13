@@ -295,7 +295,9 @@
     "remove_discount_code": "ลบรหัสส่วนลด: {{ code }}",
     "continue_shopping": "เลือกซื้อสินค้าต่อ",
     "quick_buy_product": "ซื้อเลย",
-    "quick_view_product": "ดูสินค้า"
+    "quick_view_product": "ดูสินค้า",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

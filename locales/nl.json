@@ -295,7 +295,9 @@
     "remove_discount_code": "Kortingscode verwijderen: {{ code }}",
     "continue_shopping": "Verdergaan met winkelen",
     "quick_buy_product": "Nu kopen",
-    "quick_view_product": "Product bekijken"
+    "quick_view_product": "Product bekijken",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

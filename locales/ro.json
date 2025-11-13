@@ -295,7 +295,9 @@
     "remove_discount_code": "Șterge codul de reducere: {{ code }}",
     "continue_shopping": "Continuați cumpărăturile",
     "quick_buy_product": "Cumpărați acum",
-    "quick_view_product": "Vizualizați produsul"
+    "quick_view_product": "Vizualizați produsul",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

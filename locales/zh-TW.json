@@ -295,7 +295,9 @@
     "remove_discount_code": "移除折扣代碼：{{ code }}",
     "continue_shopping": "繼續購物",
     "quick_buy_product": "立即購買",
-    "quick_view_product": "查看產品"
+    "quick_view_product": "查看產品",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

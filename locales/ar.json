@@ -295,7 +295,9 @@
     "remove_discount_code": "إزالة رمز الخصم: {{ code }}",
     "continue_shopping": "متابعة التسوق",
     "quick_buy_product": "شراء الآن",
-    "quick_view_product": "عرض المنتج"
+    "quick_view_product": "عرض المنتج",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

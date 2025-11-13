@@ -295,7 +295,9 @@
     "remove_discount_code": "Ukloni kod za popust: {{ code }}",
     "continue_shopping": "Nastavi kupovinu",
     "quick_buy_product": "Kupite odmah",
-    "quick_view_product": "Prikaz proizvoda"
+    "quick_view_product": "Prikaz proizvoda",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

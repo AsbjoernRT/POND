@@ -295,7 +295,9 @@
     "remove_discount_code": "Удалить промокод: {{ code }}",
     "continue_shopping": "Продолжить покупки",
     "quick_buy_product": "Купить",
-    "quick_view_product": "Просмотреть товар"
+    "quick_view_product": "Просмотреть товар",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

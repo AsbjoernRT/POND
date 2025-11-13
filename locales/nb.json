@@ -295,7 +295,9 @@
     "remove_discount_code": "Fjern rabattkode: {{ code }}",
     "continue_shopping": "Fortsett å handle",
     "quick_buy_product": "Kjøp nå",
-    "quick_view_product": "Se produkt"
+    "quick_view_product": "Se produkt",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

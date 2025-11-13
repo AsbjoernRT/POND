@@ -295,7 +295,9 @@
     "remove_discount_code": "Pašalinti nuolaidos kodą: {{ code }}",
     "continue_shopping": "Tęsti apsipirkimą",
     "quick_buy_product": "Pirkti dabar",
-    "quick_view_product": "Peržiūrėti produktą"
+    "quick_view_product": "Peržiūrėti produktą",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

@@ -295,7 +295,9 @@
     "remove_discount_code": "İndirim kodunu kaldır: {{ code }}",
     "continue_shopping": "Alışverişe devam et",
     "quick_buy_product": "Şimdi satın alın",
-    "quick_view_product": "Ürünü görüntüle"
+    "quick_view_product": "Ürünü görüntüle",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

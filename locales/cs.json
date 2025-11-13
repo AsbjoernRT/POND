@@ -295,7 +295,9 @@
     "remove_discount_code": "Odebrat slevový kód: {{ code }}",
     "continue_shopping": "Pokračovat v nákupu",
     "quick_buy_product": "Koupit",
-    "quick_view_product": "Zobrazit produkt"
+    "quick_view_product": "Zobrazit produkt",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

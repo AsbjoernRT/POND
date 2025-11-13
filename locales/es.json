@@ -295,7 +295,9 @@
     "remove_discount_code": "Eliminar código de descuento: {{ code }}",
     "continue_shopping": "Seguir comprando",
     "quick_buy_product": "Comprar ahora",
-    "quick_view_product": "Ver producto"
+    "quick_view_product": "Ver producto",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

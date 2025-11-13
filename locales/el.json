@@ -295,7 +295,9 @@
     "remove_discount_code": "Αφαίρεση κωδικού έκπτωσης: {{ code }}",
     "continue_shopping": "Συνέχιση αγορών",
     "quick_buy_product": "Αγοράστε τώρα",
-    "quick_view_product": "Δείτε το προϊόν"
+    "quick_view_product": "Δείτε το προϊόν",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

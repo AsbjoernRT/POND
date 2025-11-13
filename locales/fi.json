@@ -295,7 +295,9 @@
     "remove_discount_code": "Poista alennuskoodi: {{ code }}",
     "continue_shopping": "Jatka ostoksia",
     "quick_buy_product": "Osta nyt",
-    "quick_view_product": "Näytä tuote"
+    "quick_view_product": "Näytä tuote",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

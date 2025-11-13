@@ -295,7 +295,9 @@
     "remove_discount_code": "Kedvezménykód eltávolítása: {{ code }}",
     "continue_shopping": "Vásárlás folytatása",
     "quick_buy_product": "Megveszem",
-    "quick_view_product": "Termék megtekintése"
+    "quick_view_product": "Termék megtekintése",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

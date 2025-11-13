@@ -295,7 +295,9 @@
     "remove_discount_code": "割引コードを削除: {{ code }}",
     "continue_shopping": "ショッピングを続ける",
     "quick_buy_product": "今すぐ購入",
-    "quick_view_product": "商品を見る"
+    "quick_view_product": "商品を見る",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {

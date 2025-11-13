@@ -295,7 +295,9 @@
     "remove_discount_code": "Xóa mã giảm giá: {{ code }}",
     "continue_shopping": "Tiếp tục mua sắm",
     "quick_buy_product": "Mua ngay",
-    "quick_view_product": "Xem sản phẩm"
+    "quick_view_product": "Xem sản phẩm",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!"
   },
   "blog": {
     "grid": {
