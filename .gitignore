@@ -24,3 +24,4 @@ yarn-error.log*
 # Env files
 .env
 .env.local
+to-do.md

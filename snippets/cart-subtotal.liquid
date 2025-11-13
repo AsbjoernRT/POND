@@ -7,22 +7,9 @@
   -%}
 
 	{%- if type == 'page' -%}
-
-		{%- if settings.cart_free_shipping -%}
-			<div class="cart__subtotal-widget">
-				<shipping-notice
-					data-free-shipping="{{ settings.cart_free_shipping_amount | times: 100 }}"
-					data-cart-total="{{ cart.total_price }}"
-				>
-					<span data-js-free-shipping-text></span>
-					<span class="cart-notice__slider">
-						<span class="cart-notice__slider-bar" data-js-free-shipping-slider></span>
-					</span>
-				</shipping-notice>
-				<script src="{{ 'component-shipping-notice.js' | asset_url }}" defer></script>
-			</div>
-		{%- endif -%}
-
+		<div class="cart__subtotal-widget">
+			{%- render 'cart-promotion-banner', type: 'page' -%}
+		</div>
 	{%- endif -%}
 
 	<div class="cart__details 

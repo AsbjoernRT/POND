@@ -279,6 +279,8 @@
     },
     "free_shipping_remaining_html": "You are {{ remaining_amount }} away from free shipping.",
     "free_shipping_eligible": "You are eligible for free shipping!",
+    "volume_discount_remaining": "Add {{ count }} more to get {{ discount }}% off!",
+    "volume_discount_eligible": "You're getting {{ discount }}% off {{ count }} items!",
     "shipping_calculator": {
       "title": "Estimate shipping",
       "form_button_label": "Estimate",

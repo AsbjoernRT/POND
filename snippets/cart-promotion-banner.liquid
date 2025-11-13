@@ -1,0 +1,43 @@
+{%- comment -%}
+  Smart promotion banner that supports both free shipping and volume discounts
+  Usage: {% render 'cart-promotion-banner', type: 'sidebar' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign promotion_type = settings.cart_promotion_type | default: 'free_shipping'
+  assign show_banner = false
+
+  if promotion_type == 'free_shipping' and settings.cart_free_shipping
+    assign show_banner = true
+  elsif promotion_type == 'volume_discount' and settings.volume_discount_enabled
+    assign show_banner = true
+  elsif promotion_type == 'both'
+    if settings.cart_free_shipping or settings.volume_discount_enabled
+      assign show_banner = true
+    endif
+  endif
+-%}
+
+{%- if show_banner -%}
+  <div class="cart-notice text-size--14 hide-if-empty-cart {% if type == 'sidebar' %}gutter--sidebar border--sidebar{% endif %}">
+    <div class="{% if type == 'sidebar' %}sidebar__inner-element{% endif %}">
+      <cart-promotion
+        data-promotion-type="{{ promotion_type }}"
+        data-free-shipping="{{ settings.cart_free_shipping_amount | times: 100 }}"
+        data-cart-total="{{ cart.total_price }}"
+        data-volume-min-qty="{{ settings.volume_discount_min_qty | default: 2 }}"
+        data-volume-percentage="{{ settings.volume_discount_percentage | default: 20 }}"
+        data-volume-tag="{{ settings.volume_discount_tag }}"
+        data-volume-collection="{{ settings.volume_discount_collection }}"
+        data-cart-items='{{ cart.items | json | escape }}'
+        data-cart-discounts='{{ cart.discount_applications | json | escape }}'
+      >
+        <span data-js-promotion-text></span>
+        <span class="cart-notice__slider">
+          <span class="cart-notice__slider-bar" data-js-promotion-slider></span>
+        </span>
+      </cart-promotion>
+    </div>
+  </div>
+  <script src="{{ 'component-cart-promotion.js' | asset_url }}" defer></script>
+{%- endif -%}
