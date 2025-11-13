@@ -272,8 +272,7 @@
 				],
 				"role": {
 					"background": {
-						"solid": "background",
-						"gradient": "background"
+						"solid": "background"
 					},
 					"text": "text",
 					"primary_button": "text",
