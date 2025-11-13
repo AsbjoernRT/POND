@@ -10,6 +10,7 @@
 {
   "current": {
     "cart_promotion_type": "volume_discount",
+    "volume_discount_enabled": true,
     "content_for_index": []
   }
 }
