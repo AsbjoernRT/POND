@@ -245,6 +245,9 @@
     },
     "featured_collection_LnwHMV": {
       "type": "featured-collection",
+      "custom_css": [
+        ".section-footer {display: none !important;}"
+      ],
       "settings": {
         "heading": "POND1 - THE ICONIC BESTSELLER",
         "seo_h_tag": "h2",
