@@ -9,59 +9,57 @@
  */
 {
   "sections": {
-    "promotion_blocks_K9TNge": {
-      "type": "promotion-blocks",
+    "vertical_slider_beaV8d": {
+      "type": "vertical-slider",
       "blocks": {
-        "card_E7WRdC": {
-          "type": "card",
+        "slide_n6qjhH": {
+          "type": "slide",
           "settings": {
-            "video_object": "shopify://files/videos/HeroVideo_Pond.mp4",
+            "video_object": "shopify://files/videos/POND1_PEDRO02_VAND ONLINE_Compressed.mp4",
             "image_overlay": "rgba(0,0,0,0)",
-            "image_overlay_opacity": 30,
-            "media_shape": "none",
-            "add_gallery_item_border": false,
+            "image_overlay_opacity": 0,
             "hide_media": false,
             "title": "",
-            "subtitle": "",
-            "text_color_scheme": "",
-            "button_label": "",
-            "button_link": "",
+            "subtitle": "We believe that swimming in open water should not be limited to palm-fringed beaches or confined to the summer months.",
+            "text_color_scheme": "scheme3",
+            "text_blending": "normal",
+            "button_label": "SHOP PREMIUM SWIMWEAR",
+            "button_link": "shopify://collections/swimwear",
             "target": false,
-            "seo_h_tag": "h3"
+            "seo_h_tag_title": "h2",
+            "seo_h_tag_subtitle": "span"
           }
         }
       },
       "block_order": [
-        "card_E7WRdC"
+        "slide_n6qjhH"
       ],
-      "name": "t:raw-extra-words.sections.rich_blocks.name",
       "settings": {
-        "heading": "",
-        "seo_h_tag": "h2",
-        "disable_section_title_border": false,
-        "layout_desktop": "grid-1",
-        "layout_mobile": "grid-palm-1",
-        "style": "grid",
-        "image_aspect_ratio": "0.83333",
-        "alignment": "horizontal-left align-content--vertical-bottom",
+        "image_aspect_ratio_desktop": "1.77777",
+        "image_aspect_ratio_mobile": "0.666667",
+        "media_shape": "none",
+        "add_gallery_item_border": false,
+        "alignment": "horizontal-center align-content--vertical-middle",
         "width": "100",
-        "title_font": "text-font--headings",
-        "title_size": "text-size--40",
-        "mobile_text_size": "1",
-        "subtitle_size": "text-size--18",
-        "spacing": 12,
-        "gutter": "grid-padding",
+        "spacing": 30,
+        "gutter": "large",
+        "title_text_font": "text-font--headings",
+        "title_text_size": "text-size--20",
+        "title_mobile_size": "1",
+        "title_text_line_height": "text-line-height--default",
+        "subtitle_text_font": "text-font--headings",
+        "subtitle_text_size": "text-size--100",
+        "subtitle_mobile_size": "1",
+        "subtitle_text_line_height": "text-line-height--default",
         "button_style": "outline",
         "button_size": "button--regular",
         "button_hover": "-arrow",
-        "cta_label": "",
-        "cta_url": "",
-        "color_scheme": "",
+        "color_scheme": "scheme1",
         "disable_section_bottom_border": false,
-        "disable_border": false,
         "remove_border_radius": false,
         "remove_padding": false,
-        "hide_block_if": false
+        "remove_zoom": false,
+        "remove_prlx": false
       }
     },
     "scrolling_images_bkfQ6J": {
@@ -611,7 +609,7 @@
     }
   },
   "order": [
-    "promotion_blocks_K9TNge",
+    "vertical_slider_beaV8d",
     "scrolling_images_bkfQ6J",
     "promotion_blocks_nXzyf8",
     "featured_collection_LnwHMV",
