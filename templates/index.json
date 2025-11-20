@@ -255,7 +255,7 @@
         "collection_3": "",
         "products_number": 4,
         "style": "grid",
-        "layout": "four-columns",
+        "layout": "three-columns",
         "layout_mobile": "grid-palm-2",
         "color_scheme": "",
         "disable_section_bottom_border": false,
