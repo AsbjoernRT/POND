@@ -1,1 +1,32 @@
-{"sections":{"main":{"type":"main-page","settings":{}},"custom_liquid_PiAGJW":{"type":"custom-liquid","settings":{"heading":"","seo_h_tag":"h2","disable_section_title_border":false,"custom_liquid":"<div id=\"sn-526f132c-2b60-49ea-ade6-5934e4fa4118\"><\/div>","remove_padding":false,"disable_section_bottom_border":false}}},"order":["main","custom_liquid_PiAGJW"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "custom_liquid_PiAGJW": {
+      "type": "custom-liquid",
+      "settings": {
+        "heading": "",
+        "seo_h_tag": "h2",
+        "disable_section_title_border": false,
+        "custom_liquid": "<div id=\"sn-2f793cfb-843a-456e-9536-c0b1bcf023f8\"></div>",
+        "remove_padding": false,
+        "disable_section_bottom_border": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_PiAGJW"
+  ]
+}
