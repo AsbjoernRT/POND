@@ -36,7 +36,7 @@
       ],
       "settings": {
         "image_aspect_ratio_desktop": "1.77777",
-        "image_aspect_ratio_mobile": "0.666667",
+        "image_aspect_ratio_mobile": "0.83333",
         "media_shape": "none",
         "add_gallery_item_border": false,
         "alignment": "horizontal-center align-content--vertical-middle",
