@@ -9,25 +9,6 @@
  */
 {
   "sections": {
-    "featured_collection_LnwHMV": {
-      "type": "featured-collection",
-      "settings": {
-        "heading": "",
-        "seo_h_tag": "h2",
-        "disable_section_title_border": false,
-        "collection": "bestsellers",
-        "collection_1": "",
-        "collection_2": "",
-        "collection_3": "",
-        "products_number": 12,
-        "style": "grid",
-        "layout": "four-columns",
-        "layout_mobile": "grid-palm-2",
-        "color_scheme": "",
-        "disable_section_bottom_border": false,
-        "disable_border": false
-      }
-    },
     "promotion_blocks_K9TNge": {
       "type": "promotion-blocks",
       "blocks": {
@@ -376,6 +357,25 @@
         "remove_padding": false,
         "remove_zoom": false,
         "remove_prlx": false
+      }
+    },
+    "featured_collection_LnwHMV": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "",
+        "seo_h_tag": "h2",
+        "disable_section_title_border": false,
+        "collection": "pond1",
+        "collection_1": "",
+        "collection_2": "",
+        "collection_3": "",
+        "products_number": 12,
+        "style": "grid",
+        "layout": "four-columns",
+        "layout_mobile": "grid-palm-2",
+        "color_scheme": "",
+        "disable_section_bottom_border": false,
+        "disable_border": false
       }
     },
     "vertical_slider_EanqXi": {
