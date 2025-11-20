@@ -553,7 +553,7 @@
           "settings": {
             "icon": "delivery",
             "title": "Free Shipping Available",
-            "caption": "<p>We offer FREE UPS worldwide standard shipping on orders above €90 / $90. All duties & taxes included.</p>",
+            "caption": "<p>We offer FREE UPS worldwide standard shipping on orders above €90 / $90. All US, EU & AUS duties & taxes included.</p>",
             "cta_label": "",
             "cta_url": "",
             "target": false,
