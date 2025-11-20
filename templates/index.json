@@ -243,21 +243,20 @@
         "hide_block_if": false
       }
     },
-    "featured_collection_RinGFX": {
+    "featured_collection_LnwHMV": {
       "type": "featured-collection",
-      "disabled": true,
       "settings": {
-        "heading": "POND3 Sport ' 25",
+        "heading": "POND1 - THE ICONIC BESTSELLER",
         "seo_h_tag": "h2",
         "disable_section_title_border": false,
-        "collection": "sport",
+        "collection": "pond1",
         "collection_1": "",
         "collection_2": "",
         "collection_3": "",
-        "products_number": 7,
-        "style": "slider",
+        "products_number": 4,
+        "style": "grid",
         "layout": "four-columns",
-        "layout_mobile": "grid-palm-1",
+        "layout_mobile": "grid-palm-2",
         "color_scheme": "",
         "disable_section_bottom_border": false,
         "disable_border": false
@@ -357,25 +356,6 @@
         "remove_padding": false,
         "remove_zoom": false,
         "remove_prlx": false
-      }
-    },
-    "featured_collection_LnwHMV": {
-      "type": "featured-collection",
-      "settings": {
-        "heading": "",
-        "seo_h_tag": "h2",
-        "disable_section_title_border": false,
-        "collection": "pond1",
-        "collection_1": "",
-        "collection_2": "",
-        "collection_3": "",
-        "products_number": 12,
-        "style": "grid",
-        "layout": "four-columns",
-        "layout_mobile": "grid-palm-2",
-        "color_scheme": "",
-        "disable_section_bottom_border": false,
-        "disable_border": false
       }
     },
     "vertical_slider_EanqXi": {
@@ -631,9 +611,8 @@
     "promotion_blocks_K9TNge",
     "scrolling_images_bkfQ6J",
     "promotion_blocks_nXzyf8",
-    "featured_collection_RinGFX",
-    "9c62f9cb-6847-4a50-ab6a-637fd5978dd3",
     "featured_collection_LnwHMV",
+    "9c62f9cb-6847-4a50-ab6a-637fd5978dd3",
     "vertical_slider_EanqXi",
     "d0f877a5-279e-49cc-9029-84873d4a1238",
     "17234015593a779481",
