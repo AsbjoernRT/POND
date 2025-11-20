@@ -166,32 +166,33 @@
         "disable_border": false
       }
     },
+    "featured_collection_LnwHMV": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".section-footer {display: none !important;}"
+      ],
+      "settings": {
+        "heading": "POND1 - THE ICONIC BESTSELLER",
+        "seo_h_tag": "h2",
+        "disable_section_title_border": false,
+        "collection": "pond1",
+        "collection_1": "",
+        "collection_2": "",
+        "collection_3": "",
+        "products_number": 4,
+        "style": "slider",
+        "layout": "three-columns",
+        "layout_mobile": "grid-palm-2",
+        "color_scheme": "",
+        "disable_section_bottom_border": false,
+        "disable_border": false
+      }
+    },
     "9c62f9cb-6847-4a50-ab6a-637fd5978dd3": {
       "type": "vertical-slider",
       "blocks": {
-        "e79702c9-32e6-40da-8282-9bfbb2df5a08": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/Home_Summer.jpg",
-            "mobile_image": "shopify://shop_images/Home_Summer_Mobile.jpg",
-            "image_overlay": "rgba(0,0,0,0)",
-            "image_overlay_opacity": 0,
-            "hide_media": false,
-            "title": "Premium - Perfect Fit - Designed in CPH",
-            "subtitle": "Summer In The City",
-            "text_color_scheme": "scheme3",
-            "text_blending": "normal",
-            "button_label": "Shop swimwear",
-            "button_link": "shopify://collections/swimwear",
-            "target": false,
-            "seo_h_tag_title": "h2",
-            "seo_h_tag_subtitle": "span"
-          }
-        },
         "slide_7TAiFE": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Home_Sport_Grey.jpg",
             "mobile_image": "shopify://shop_images/Home_Sport_Grey_Mobile.jpg",
@@ -230,7 +231,6 @@
         }
       },
       "block_order": [
-        "e79702c9-32e6-40da-8282-9bfbb2df5a08",
         "slide_7TAiFE",
         "slide_zQBTJd"
       ],
@@ -260,28 +260,6 @@
         "remove_padding": false,
         "remove_zoom": false,
         "remove_prlx": false
-      }
-    },
-    "featured_collection_LnwHMV": {
-      "type": "featured-collection",
-      "custom_css": [
-        ".section-footer {display: none !important;}"
-      ],
-      "settings": {
-        "heading": "POND1 - THE ICONIC BESTSELLER",
-        "seo_h_tag": "h2",
-        "disable_section_title_border": false,
-        "collection": "pond1",
-        "collection_1": "",
-        "collection_2": "",
-        "collection_3": "",
-        "products_number": 4,
-        "style": "slider",
-        "layout": "three-columns",
-        "layout_mobile": "grid-palm-2",
-        "color_scheme": "",
-        "disable_section_bottom_border": false,
-        "disable_border": false
       }
     },
     "promotion_blocks_nXzyf8": {
@@ -611,8 +589,8 @@
   "order": [
     "vertical_slider_beaV8d",
     "scrolling_images_bkfQ6J",
-    "9c62f9cb-6847-4a50-ab6a-637fd5978dd3",
     "featured_collection_LnwHMV",
+    "9c62f9cb-6847-4a50-ab6a-637fd5978dd3",
     "promotion_blocks_nXzyf8",
     "vertical_slider_EanqXi",
     "d0f877a5-279e-49cc-9029-84873d4a1238",
